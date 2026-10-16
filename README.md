@@ -39,30 +39,3 @@ Open the local URL printed in the terminal (usually `http://localhost:5173`).
 If you add or change the API key while the server is running, stop and restart
 the server.
 
-## Other commands
-
-Create a production build:
-
-```bash
-npm run build
-```
-
-Run the linter:
-
-```bash
-npm run lint
-```
-
-Preview a production build locally:
-
-```bash
-npm run preview
-```
-
-## Note about the API key
-
-This frontend sends requests directly from the browser to OMDb. Vite variables
-that start with `VITE_` are included in the browser app, so this setup is for
-local development and demonstration—not for protecting a key in a public
-production deployment. A production app should make API requests through a
-server-side service.
