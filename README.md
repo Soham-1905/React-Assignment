@@ -1,76 +1,68 @@
-# React + TypeScript + Vite
+# Movie Search
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React and TypeScript app for searching movies with the OMDb API. Type a title
+to see suggestions, then select a movie to view its details.
 
-Currently, two official plugins are available:
+## Requirements
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Node.js and npm
+- An OMDb API key from [omdbapi.com](https://www.omdbapi.com/)
 
-## React Compiler
+## Setup
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. Open a terminal in the project folder.
+2. Install the dependencies:
 
-## Expanding the ESLint configuration
+   ```bash
+   npm install
+   ```
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+3. Create a file named `.env` in the project root, next to `package.json`.
+4. Add your OMDb key to that file:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+   ```env
+   VITE_OMDB_API_KEY=your_actual_api_key
+   ```
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+   Replace `your_actual_api_key` with your key. Do not add quotes, share the
+   key, or commit `.env`; it is ignored by Git.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Run locally
 
+Start the development server:
+
+```bash
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+Open the local URL printed in the terminal (usually `http://localhost:5173`).
+If you add or change the API key while the server is running, stop and restart
+the server.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Other commands
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Create a production build:
 
+```bash
+npm run build
 ```
-"# React-Assignment" 
+
+Run the linter:
+
+```bash
+npm run lint
+```
+
+Preview a production build locally:
+
+```bash
+npm run preview
+```
+
+## Note about the API key
+
+This frontend sends requests directly from the browser to OMDb. Vite variables
+that start with `VITE_` are included in the browser app, so this setup is for
+local development and demonstration—not for protecting a key in a public
+production deployment. A production app should make API requests through a
+server-side service.
